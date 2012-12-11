@@ -28,4 +28,8 @@
     <string name="global_action_restart_download_progress">Restarting to download mode\u2026</string>
     <!-- Restart to fastboot mode progress dialog. This is shown if the user chooses to restart the device. -->
     <string name="global_action_restart_fastboot_progress">Restarting to fastbootd mode\u2026</string>
+
+    <!-- Navigation bar dpad -->
+    <string name="accessibility_dpad_left">Cursor left</string>
+    <string name="accessibility_dpad_right">Cursor right</string>
 </resources>
