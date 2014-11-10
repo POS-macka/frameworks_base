@@ -165,6 +165,7 @@ import com.android.systemui.plugins.FalsingManager.FalsingTapListener;
 import com.android.systemui.plugins.qs.QS;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.plugins.statusbar.StatusBarStateController.StateListener;
+import com.android.systemui.shade.NotificationPanelViewController.TouchHandler;
 import com.android.systemui.shade.transition.ShadeTransitionController;
 import com.android.systemui.shared.system.InteractionJankMonitorWrapper;
 import com.android.systemui.shared.system.QuickStepContract;
@@ -284,6 +285,8 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
 
     private static final String DOUBLE_TAP_SLEEP_GESTURE =
             "customsystem:" + Settings.System.DOUBLE_TAP_SLEEP_GESTURE;
+    private static final String STATUS_BAR_QUICK_QS_PULLDOWN =
+            "customsystem:" + Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN;
 
     private static final Rect M_DUMMY_DIRTY_RECT = new Rect(0, 0, 1, 1);
     private static final Rect EMPTY_RECT = new Rect();
@@ -542,6 +545,8 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
 
     private final KeyguardMediaController mKeyguardMediaController;
 
+    private int mOneFingerQuickSettingsIntercept;
+
     private final Optional<KeyguardUnfoldTransition> mKeyguardUnfoldTransition;
     private final Optional<NotificationPanelUnfoldAnimationController>
             mNotificationPanelUnfoldAnimationController;
@@ -789,6 +794,7 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
             KeyguardRootView keyguardRootView,
             TunerService tunerService,
             Context context) {
+
         keyguardStateController.addCallback(new KeyguardStateController.Callback() {
             @Override
             public void onKeyguardFadingAwayChanged() {
@@ -4686,6 +4692,7 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
             mStatusBarStateListener.onStateChanged(mStatusBarStateController.getState());
             mConfigurationController.addCallback(mConfigurationListener);
             mTunerService.addTunable(this, DOUBLE_TAP_SLEEP_GESTURE);
+            mTunerService.addTunable(this, STATUS_BAR_QUICK_QS_PULLDOWN);
             // Theme might have changed between inflating this view and attaching it to the
             // window, so
             // force a call to onThemeChanged
@@ -4710,6 +4717,9 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
         public void onTuningChanged(String key, String newValue) {
             if (DOUBLE_TAP_SLEEP_GESTURE.equals(key)) {
                 mDoubleTapToSleepEnabled = TunerService.parseIntegerSwitch(newValue, true);
+            } else if (STATUS_BAR_QUICK_QS_PULLDOWN.equals(key)) {
+                mOneFingerQuickSettingsIntercept = TunerService.parseInteger(newValue, 1);
+
             }
         }
     }
@@ -5354,5 +5364,8 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
             return super.performAccessibilityAction(host, action, args);
         }
     }
+    
+    protected int getOneFingerQuickSettingsIntercept() {
+        return mOneFingerQuickSettingsIntercept;
+    }
 }
-

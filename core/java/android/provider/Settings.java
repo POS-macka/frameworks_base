@@ -6199,6 +6199,13 @@ public final class Settings {
         public static final String DISPLAY_CUTOUT_HIDDEN = "display_cutout_hidden";
 
         /**
+         * Whether to allow one finger quick settings expansion on the side of the statusbar.
+         * 0 = 0ff, 1 = right, 2 = left
+         * @hide
+         */
+        public static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
+
+        /**
          * IMPORTANT: If you add a new public settings you also have to add it to
          * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
          * it to PRIVATE_SETTINGS below. Also add a validator that can validate
@@ -12281,7 +12288,6 @@ public final class Settings {
         public static final String SWAP_CAPACITIVE_KEYS = "swap_capacitive_keys";
 
         /**
-
          * Whether to include options in power menu for rebooting into recovery or bootloader
          * @hide
          */
