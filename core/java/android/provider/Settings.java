@@ -6178,6 +6178,14 @@ public final class Settings {
         public static final String NAVIGATION_BAR_HINT = "navigation_bar_hint";
 
         /**
+         * Whether to answer the call with the volume keys, the value is boolean.
+         * 0 = 0ff, 1 = on
+
+         * @hide
+         */
+        public static final String VOLUME_ANSWER_CALL = "volume_answer_call";
+
+        /**
          * IMPORTANT: If you add a new public settings you also have to add it to
          * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
          * it to PRIVATE_SETTINGS below. Also add a validator that can validate
@@ -6401,6 +6409,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(VOLUME_WAKE_SCREEN);
             PRIVATE_SETTINGS.add(VOLBTN_MUSIC_CONTROLS);
             PRIVATE_SETTINGS.add(NAV_BAR_COMPACT_LAYOUT);
+            PRIVATE_SETTINGS.add(VOLUME_ANSWER_CALL);
         }
         /**
          * These entries are considered common between the personal and the managed profile,
