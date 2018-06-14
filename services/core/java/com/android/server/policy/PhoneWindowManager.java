@@ -1203,7 +1203,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 // Abort possibly stuck animations only when power key up without long press case.
                 mHandler.post(mWindowManagerFuncs::triggerAnimationFailsafe);
                 // See if we deferred screen wake because long press power for torch is enabled
-                if (mResolvedLongPressOnPowerBehavior == LONG_PRESS_POWER_TORCH && !isScreenOn()) {
+                if (mResolvedLongPressOnPowerBehavior == LONG_PRESS_POWER_TORCH &&
+                        (!isScreenOn() || isDozeMode())) {
                     wakeUpFromPowerKey(SystemClock.uptimeMillis());
                 }
             }
@@ -1572,11 +1573,24 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         }
     }
 
+    private boolean isDozeMode() {
+        IDreamManager dreamManager = getDreamManager();
+
+        try {
+            if (dreamManager != null && dreamManager.isDreaming()) {
+                return true;
+            }
+        } catch (RemoteException e) {
+            Slog.e(TAG, "RemoteException when checking if dreaming", e);
+        }
+        return false;
+    }
+
     private int getResolvedLongPressOnPowerBehavior() {
         if (FactoryTest.isLongPressOnPowerOffEnabled()) {
             return LONG_PRESS_POWER_SHUT_OFF_NO_CONFIRM;
         }
-        if (mTorchLongPressPowerEnabled && (!isScreenOn() || mTorchEnabled)) {
+        if (mTorchLongPressPowerEnabled && (!isScreenOn() || isDozeMode() || mTorchEnabled)) {
             return LONG_PRESS_POWER_TORCH;
         }
 
@@ -5663,19 +5677,14 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             return false;
         }
 
-        IDreamManager dreamManager = getDreamManager();
-        boolean isDreaming = false;
-        try {
-            if (dreamManager != null && dreamManager.isDreaming()) {
-                isDreaming = true;
-            }
-        } catch (RemoteException e) {
-            Slog.e(TAG, "RemoteException when checking if dreaming", e);
-        }
-
         if (isDreaming && mVolBtnMusicControls && isVolumeKey(keyCode)) {
             // If we're using long press to skip, we don't want the volume key events to be
             // dispatched when the system is dreaming, in order to process them later
+
+        final boolean isDozing = isDozeMode();
+
+        if ((keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP)
+                && isDozing) {
             return false;
         }
 
@@ -5697,7 +5706,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         if (isDefaultDisplay) {
             // Send events to a dozing dream even if the screen is off since the dream
             // is in control of the state of the screen.
-            if (isDreaming) {
+            if (isDozing) {
                 return true;
             }
         }
