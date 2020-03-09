@@ -6166,6 +6166,12 @@ public final class Settings {
         public static final String VOLBTN_MUSIC_CONTROLS = "volbtn_music_controls";
 
         /**
+         * boolean value. toggles compact layout in navigation bar
+         * @hide
+         */
+        public static final String NAV_BAR_COMPACT_LAYOUT = "navigation_bar_compact_layout";
+
+        /**
          * IMPORTANT: If you add a new public settings you also have to add it to
          * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
          * it to PRIVATE_SETTINGS below. Also add a validator that can validate
@@ -6388,6 +6394,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(KEY_EDGE_LONG_SWIPE_ACTION);
             PRIVATE_SETTINGS.add(VOLUME_WAKE_SCREEN);
             PRIVATE_SETTINGS.add(VOLBTN_MUSIC_CONTROLS);
+            PRIVATE_SETTINGS.add(NAV_BAR_COMPACT_LAYOUT);
         }
         /**
          * These entries are considered common between the personal and the managed profile,
