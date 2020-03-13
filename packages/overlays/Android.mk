@@ -90,13 +90,17 @@ LOCAL_REQUIRED_MODULES := \
         IconPackLornAndroidOverlay \
         IconPackLornSystemUIOverlay \
         IconShapeCylinderOverlay \
+        IconShapeCloudyOverlay \
+        IconShapeFlowerOverlay \
         IconShapeHeartOverlay \
         IconShapeHexagonOverlay \
         IconShapeLeafOverlay \
         IconShapePebbleOverlay \
+        IconShapeRoundedHexagonOverlay \
         IconShapeRoundedRectOverlay \
         IconShapeSquareOverlay \
         IconShapeSquircleOverlay \
+        IconShapeStretchedOverlay \
         IconShapeTaperedRectOverlay \
         IconShapeTeardropOverlay \
         IconShapeVesselOverlay \
