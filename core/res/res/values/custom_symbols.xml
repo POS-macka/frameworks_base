@@ -148,4 +148,7 @@
     <!-- Camera key type -->
     <java-symbol type="bool" name="config_singleStageCameraKey" />
 
+    <!-- Power menu -->
+    <java-symbol type="array" name="config_restartActionsList" />
+
 </resources>
