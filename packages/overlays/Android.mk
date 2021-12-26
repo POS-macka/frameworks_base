@@ -81,14 +81,25 @@ LOCAL_REQUIRED_MODULES := \
 	IconPackXperiaAndroidOverlay \
 	IconPackXperiaSettingsOverlay \
 	IconPackXperiaSystemUIOverlay \
-    IconPackPlumpySystemUIOverlay \
-    IconPackPlumpyAndroidOverlay \
-    IconPackAuroraAndroidOverlay \
-    IconPackAuroraSystemUIOverlay \
-    IconPackGradiconAndroidOverlay \
-    IconPackGradiconSystemUIOverlay \
-    IconPackLornAndroidOverlay \
-    IconPackLornSystemUIOverlay \
+        IconPackPlumpySystemUIOverlay \
+        IconPackPlumpyAndroidOverlay \
+        IconPackAuroraAndroidOverlay \
+        IconPackAuroraSystemUIOverlay \
+        IconPackGradiconAndroidOverlay \
+        IconPackGradiconSystemUIOverlay \
+        IconPackLornAndroidOverlay \
+        IconPackLornSystemUIOverlay \
+        IconShapeCylinderOverlay \
+        IconShapeHeartOverlay \
+        IconShapeHexagonOverlay \
+        IconShapeLeafOverlay \
+        IconShapePebbleOverlay \
+        IconShapeRoundedRectOverlay \
+        IconShapeSquareOverlay \
+        IconShapeSquircleOverlay \
+        IconShapeTaperedRectOverlay \
+        IconShapeTeardropOverlay \
+        IconShapeVesselOverlay \
 	NavigationBarMode3ButtonOverlay \
 	NavigationBarModeGesturalOverlay \
 	NavigationBarModeGesturalOverlayNarrowBack \
