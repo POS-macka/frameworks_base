@@ -61,17 +61,17 @@ LOCAL_REQUIRED_MODULES := \
 	IconPackRoundedSettingsOverlay \
 	IconPackRoundedSystemUIOverlay \
 	IconPackRoundedThemePickerOverlay \
-    IconPackOOSAndroidOverlay \
-    IconPackOOSLauncherOverlay \
-    IconPackOOSSettingsOverlay \
-    IconPackOOSSystemUIOverlay \
-    IconPackOOSThemePickerOverlay \
-    IconPackAcherusAndroidOverlay \
-    IconPackAcherusSettingsOverlay \
-    IconPackAcherusSystemUIOverlay \
-    IconPackOutlineAndroidOverlay \
-    IconPackOutlineSettingsOverlay \
-    IconPackOutlineSystemUIOverlay \
+        IconPackOOSAndroidOverlay \
+        IconPackOOSLauncherOverlay \
+        IconPackOOSSettingsOverlay \
+        IconPackOOSSystemUIOverlay \
+        IconPackOOSThemePickerOverlay \
+        IconPackAcherusAndroidOverlay \
+        IconPackAcherusSettingsOverlay \
+        IconPackAcherusSystemUIOverlay \
+        IconPackOutlineAndroidOverlay \
+        IconPackOutlineSettingsOverlay \
+        IconPackOutlineSystemUIOverlay \
 	IconPackXperiaAndroidOverlay \
 	IconPackXperiaSettingsOverlay \
 	IconPackXperiaSystemUIOverlay \
@@ -90,6 +90,7 @@ LOCAL_REQUIRED_MODULES := \
 	NavigationBarModeGesturalOverlayExtraWideBack \
 	TransparentNavigationBarOverlay \
 	NotesRoleEnabledOverlay \
+	NotchBarKillerOverlay \
 	preinstalled-packages-platform-overlays.xml
 
 include $(BUILD_PHONY_PACKAGE)
