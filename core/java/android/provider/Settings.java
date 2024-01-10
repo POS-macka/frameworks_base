@@ -6138,12 +6138,6 @@ public final class Settings {
         public static final String VOLBTN_MUSIC_CONTROLS = "volbtn_music_controls";
 
         /**
-         * Whether the torch launch gesture when the screen is off should be enabled.
-         * @hide
-         */
-        public static final String TORCH_POWER_BUTTON_GESTURE = "torch_power_button_gesture";
-
-        /**
          * Force full screen for devices with cutout
          * @hide
          */
