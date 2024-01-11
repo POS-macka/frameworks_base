@@ -7235,11 +7235,6 @@ public final class ViewRootImpl implements ViewParent,
                 notifyLeaveTypingEvent();
             }
 
-            if (event.getPointerCount() == 3 && isSwipeToScreenshotGestureActive()) {
-                event.setAction(MotionEvent.ACTION_CANCEL);
-                Log.d("SwipeToScreenShot", "canceling motionEvent because of threeGesture detecting");
-            }
-
             mAttachInfo.mUnbufferedDispatchRequested = false;
             mAttachInfo.mHandlingPointerEvent = true;
             // If the event was fully handled by the handwriting initiator, then don't dispatch it
@@ -11792,14 +11787,5 @@ public final class ViewRootImpl implements ViewParent,
     public void removeTrustedPresentationCallback(@NonNull SurfaceControl.Transaction t,
             @NonNull Consumer<Boolean> listener) {
         t.clearTrustedPresentationCallback(getSurfaceControl());
-    }
-
-    private boolean isSwipeToScreenshotGestureActive() {
-        try {
-            return ActivityManager.getService().isSwipeToScreenshotGestureActive();
-        } catch (RemoteException e) {
-            Log.e("SwipeToScreenshot", "isSwipeToScreenshotGestureActive exception", e);
-            return false;
-        }
     }
 }
