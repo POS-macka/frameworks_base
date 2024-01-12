@@ -6159,13 +6159,6 @@ public final class Settings {
         public static final String VOLUME_WAKE_SCREEN = "volume_wake_screen";
 
         /**
-         * Whether or not volume button music controls should be enabled to seek media tracks
-         * 0 = 0ff, 1 = on
-         * @hide
-         */
-        public static final String VOLBTN_MUSIC_CONTROLS = "volbtn_music_controls";
-
-        /**
          * boolean value. toggles compact layout in navigation bar
          * @hide
          */
