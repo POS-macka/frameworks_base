@@ -114,7 +114,7 @@ public class NavigationBarInflaterView extends FrameLayout
     private static final String KEY_NAVIGATION_HINT =
             "customsystem:" + Settings.System.NAVIGATION_BAR_HINT;
     private static final String OVERLAY_NAVIGATION_HIDE_HINT =
-            "org.pixelexperience.overlay.navbar.nohint";
+            "com.custom.overlay.navbar.nohint";
 
     protected LayoutInflater mLayoutInflater;
     protected LayoutInflater mLandscapeInflater;

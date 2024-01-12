@@ -1047,6 +1047,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.CLICK_PARTIAL_SCREENSHOT), false, this,
+                    UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.VOLUME_ANSWER_CALL), false, this,
                     UserHandle.USER_ALL);
