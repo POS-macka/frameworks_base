@@ -792,7 +792,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces, Tune
             UserTracker userTracker,
             Provider<FingerprintManager> fingerprintManager,
             ActivityStarter activityStarter,
-            BurnInProtectionController burnInProtectionController
+            BurnInProtectionController burnInProtectionController,
             TunerService tunerService
     ) {
         mContext = context;

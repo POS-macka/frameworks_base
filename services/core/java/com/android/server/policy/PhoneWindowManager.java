@@ -951,7 +951,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.DOZE_TRIGGER_DOUBLETAP), false, this,
                     UserHandle.USER_ALL);
-
+            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NAVIGATION_BAR_SHOW), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -2957,13 +2957,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     private void updateKeyAssignments() {
         int activeHardwareKeys = mDeviceHardwareKeys;
-    /**
-     * Read values from config.xml that may be overridden depending on
-     * the configuration of the device.
-     * eg. Disable long press on home goes to recents on sw600dp.
-     */
-    private void readConfigurationDependentBehaviors() {
-        final Resources res = mContext.getResources();
 
         if (mHasNavigationBar) {
             activeHardwareKeys = 0;
@@ -5723,10 +5716,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         if (displayOff && !mHasFeatureWatch) {
             return false;
         }
-
-        if (isDreaming && mVolBtnMusicControls && isVolumeKey(keyCode)) {
-            // If we're using long press to skip, we don't want the volume key events to be
-            // dispatched when the system is dreaming, in order to process them later
 
         final boolean isDozing = isDozeMode();
 
