@@ -5950,12 +5950,6 @@ public final class Settings {
         public static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
 
         /**
-         * Whether auto brightness is applied one shot when screen is turned on
-         * @hide
-         */
-        public static final String AUTO_BRIGHTNESS_ONE_SHOT = "auto_brightness_one_shot";
-
-        /**
          * Anti flicker
          * 0 = 0ff, 1 = on
          * @hide
@@ -6448,7 +6442,6 @@ public final class Settings {
             PRIVATE_SETTINGS.add(SCREEN_FLASH_NOTIFICATION);
             PRIVATE_SETTINGS.add(SCREEN_FLASH_NOTIFICATION_COLOR);
             PRIVATE_SETTINGS.add(FORCE_FULLSCREEN_CUTOUT_APPS);
-            PRIVATE_SETTINGS.add(AUTO_BRIGHTNESS_ONE_SHOT);
             PRIVATE_SETTINGS.add(DISPLAY_TEMPERATURE_DAY);
             PRIVATE_SETTINGS.add(DISPLAY_TEMPERATURE_NIGHT);
             PRIVATE_SETTINGS.add(DISPLAY_TEMPERATURE_MODE);

@@ -84,8 +84,6 @@ import com.android.server.lights.LightsManager;
 import com.android.server.lights.LogicalLight;
 import com.android.server.policy.WindowManagerPolicy;
 
-import android.provider.Settings;
-
 import java.io.PrintWriter;
 import java.util.Objects;
 
@@ -556,9 +554,6 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
     private int mOnProximityPositiveMessages;
     private int mOnProximityNegativeMessages;
 
-    // Whether auto brightness is applied one shot when screen is turned on
-    private boolean mAutoBrightnessOneShot;
-
     // Animators.
     private ObjectAnimator mColorFadeOnAnimator;
     private ObjectAnimator mColorFadeOffAnimator;
@@ -641,7 +636,6 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
         mWindowManagerPolicy = LocalServices.getService(WindowManagerPolicy.class);
         mBlanker = blanker;
         mContext = context;
-        mAutoBrightnessOneShot = getAutoBrightnessOneShotSetting();
         mBrightnessTracker = brightnessTracker;
         // TODO: b/186428377 update brightness setting when display changes
         mBrightnessSetting = brightnessSetting;
@@ -1136,9 +1130,6 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
                 false /*notifyForDescendants*/, mSettingsObserver, UserHandle.USER_ALL);
         mContext.getContentResolver().registerContentObserver(
                 Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS_MODE),
-                false /*notifyForDescendants*/, mSettingsObserver, UserHandle.USER_ALL);
-        mContext.getContentResolver().registerContentObserver(
-                Settings.System.getUriFor(Settings.System.AUTO_BRIGHTNESS_ONE_SHOT),
                 false /*notifyForDescendants*/, mSettingsObserver, UserHandle.USER_ALL);
         handleBrightnessModeChange();
     }
@@ -1699,7 +1690,7 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
                     mLastUserSetScreenBrightness,
                     userSetBrightnessChanged, autoBrightnessAdjustment,
                     autoBrightnessAdjustmentChanged, mPowerRequest.policy,
-                    mShouldResetShortTermModel, mAutoBrightnessOneShot);
+                    mShouldResetShortTermModel);
             mShouldResetShortTermModel = false;
         }
         mBrightnessRangeController.setAutoBrightnessEnabled(autoBrightnessEnabled
@@ -2715,7 +2706,6 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
                 mAutomaticBrightnessController.resetShortTermModel();
             }
         }
-        mAutoBrightnessOneShot = getAutoBrightnessOneShotSetting();
         sendUpdatePowerState();
     }
 
@@ -2729,12 +2719,6 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
                     == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
             updatePowerState();
         }, mClock.uptimeMillis());
-    }
-
-    private boolean getAutoBrightnessOneShotSetting() {
-        return Settings.System.getIntForUser(
-                mContext.getContentResolver(), Settings.System.AUTO_BRIGHTNESS_ONE_SHOT,
-                0, UserHandle.USER_CURRENT) == 1;
     }
 
     private float getAutoBrightnessAdjustmentSetting() {
