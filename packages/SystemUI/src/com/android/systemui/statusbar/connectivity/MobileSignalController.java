@@ -457,7 +457,7 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
             str.append(plmn);
             strData.append(plmn);
         }
-        if (showSpn && spn != null && !str.toString().toLowerCase().contains(spn.toLowerCase())) {
+        if (showSpn && spn != null) {
             if (str.length() != 0) {
                 str.append(mNetworkNameSeparator);
             }
@@ -468,8 +468,7 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
         } else {
             mCurrentState.networkName = mNetworkNameDefault;
         }
-        if (showSpn && dataSpn != null &&
-                !strData.toString().toLowerCase().contains(dataSpn.toLowerCase())) {
+        if (showSpn && dataSpn != null) {
             if (strData.length() != 0) {
                 strData.append(mNetworkNameSeparator);
             }
