@@ -6354,11 +6354,6 @@ public final class Settings {
         public static final String QS_TRANSPARENCY = "qs_transparency";
 
         /**
-         * @hide
-         */
-        public static final String WIFI_STANDARD_ICON = "wifi_standard_icon";
-
-        /**
          * Wheter to show network traffic indicator in statusbar
          * @hide
          */
