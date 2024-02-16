@@ -506,12 +506,8 @@ public class LegacyNotificationIconAreaControllerImpl implements
         if (colorize) {
             color = DarkIconDispatcher.getTint(mTintAreas, v, tint);
         }
-        if (v.getStatusBarIcon().pkg.contains("systemui")) {
-            v.setStaticDrawableColor(color);
-            v.setDecorColor(tint);
-        } else {
-            return;
-        }
+        v.setStaticDrawableColor(color);
+        v.setDecorColor(tint);
     }
 
     public void showIconIsolated(StatusBarIconView icon, boolean animated) {
