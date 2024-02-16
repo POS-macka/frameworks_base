@@ -6386,12 +6386,6 @@ public final class Settings {
         public static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
 
         /**
-         * Whether StatusBar icons should use app icon
-         * @hide
-         */
-        public static final String STATUSBAR_COLORED_ICONS = "statusbar_colored_icons";
-
-        /**
          * @hide
          */
         public static final String ENABLE_TASKBAR = "enable_taskbar";
